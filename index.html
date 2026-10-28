@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>امتحان الإمبريولوجي - بنك الأسئلة</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--ink:#1b1b1f;--muted:#6b7280;--line:#e3e6eb;--accent:#b00020;--navy:#14213d;--ok:#1b7a3a;--okbg:#e4f5e8;--bad:#b00020;--badbg:#fde8eb;--sel:#e8effa;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10131a;--card:#1a1f2b;--ink:#eceef3;--muted:#9aa3b2;--line:#2c3342;--accent:#ff5c77;--navy:#0b1020;--ok:#5fd17f;--okbg:#17301f;--bad:#ff7d92;--badbg:#38181f;--sel:#22304a}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 48px}
+.hero{background:var(--navy);color:#fff;border-radius:18px;padding:28px 20px;text-align:center;border-bottom:5px solid var(--accent)}
+.hero h1{margin:0 0 6px;font-size:26px}.hero p{margin:0;color:#c9d1e0;font-size:15px}
+.grid{display:grid;gap:12px;margin-top:20px}
+.lec{display:flex;align-items:center;gap:14px;width:100%;text-align:start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;cursor:pointer;color:inherit;font:inherit}
+.lec:hover,.lec:focus-visible{border-color:var(--accent);outline:none}
+.num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:20px}
+.lec b{display:block;direction:ltr;text-align:left;font-size:16px}.lec small{color:var(--muted)}
+.bar{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.back{background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:6px 12px;cursor:pointer;font:inherit}
+.prog{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}.prog i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
+.cnt{color:var(--muted);font-size:14px;direction:ltr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.ltitle{direction:ltr;text-align:left;color:var(--accent);font-weight:700;font-size:13px;margin-bottom:8px}
+.q{direction:ltr;text-align:left;font-size:18px;font-weight:600;margin:0 0 14px}
+.opts{display:grid;gap:10px;direction:ltr}
+.opt{display:flex;gap:10px;align-items:flex-start;text-align:left;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:11px 12px;cursor:pointer;color:inherit;font:inherit;font-size:16px}
+.opt:hover:not(:disabled){background:var(--sel)}
+.opt .l{flex:none;width:26px;height:26px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:13px;font-weight:700}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.ok .l{background:var(--ok);color:#fff}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}.opt.bad .l{background:var(--bad);color:#fff}
+.opt:disabled{cursor:default}
+.btn{display:block;width:100%;margin-top:16px;background:var(--accent);color:#fff;border:0;border-radius:12px;padding:13px;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.btn.alt{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.score{text-align:center}.score .big{font-size:56px;font-weight:800;color:var(--accent);direction:ltr}
+.rev{margin-top:16px;display:grid;gap:10px}
+.r{background:var(--card);border:1px solid var(--line);border-inline-start:4px solid var(--bad);border-radius:10px;padding:10px 12px;direction:ltr;text-align:left;font-size:15px}
+.r em{color:var(--ok);font-style:normal;font-weight:600}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script>
+/* كل سؤال: [السؤال, الإجابة الصح, غلط1, غلط2, غلط3] — الترتيب بيتخلط عشوائي وقت الامتحان */
+var L=[
+{t:"Intro, Mitosis & Meiosis",q:[
+["Embryology is the branch of biology that studies:", "The prenatal development of gametes, fertilization, and development of embryos", "The postnatal development of gametes and fertilization", "The prenatal development of somatic cells and organ systems only", "The development of the embryo after implantation only"],
+["Somatic cells (e.g. muscle and nerve cells) are:", "Diploid (2n) and produced through mitosis", "Haploid (1n) and produced through mitosis", "Diploid (2n) and produced through meiosis", "Haploid (1n) and produced through meiosis"],
+["Gametes (ovum and sperm) are:", "Haploid (1n) and produced through meiosis", "Diploid (2n) and produced through meiosis", "Haploid (1n) and produced through mitosis", "Diploid (2n) and produced through mitosis"],
+["After DNA replication before mitosis, each chromosome consists of two parallel chromatids joined at a narrow region called the:", "Centromere", "Centriole", "Nucleolus organizer", "Spindle pole"],
+["The human cell contains:", "22 pairs of autosomes and one pair of sex chromosomes", "23 pairs of autosomes and one pair of sex chromosomes", "22 pairs of sex chromosomes and one pair of autosomes", "44 pairs of autosomes and 2 pairs of sex chromosomes"],
+["Mitosis is the process whereby:", "One cell divides into two daughter cells genetically identical to the parent cell", "One cell divides into four genetically distinct haploid cells", "One cell divides into two daughter cells with half the chromosome number", "Two cells fuse into one cell with double the chromosomes"],
+["In which phase do chromosomes condense, shorten, and thicken while microtubules begin forming at opposite ends of the cell?", "Prophase", "Metaphase", "Anaphase", "Telophase"],
+["Chromosomes line up in the equatorial plane, each attached by microtubules extending from the centromere to the centriole, in:", "Metaphase", "Prophase", "Anaphase", "Telophase"],
+["Which event marks the beginning of anaphase?", "Division of the centromere of each chromosome, then migration of chromatids to opposite poles", "Alignment of chromosomes in the equatorial plane", "Reformation of the nuclear membrane", "Condensation and shortening of chromosomes"],
+["Chromosomes uncoil and lengthen, the nuclear membrane reforms, and the cytoplasm divides in:", "Telophase", "Anaphase", "Metaphase", "Prophase"],
+["Meiosis is best defined as:", "Reduction division of a diploid germ cell into four genetically distinct haploid nuclei", "Division of a diploid cell into two genetically identical diploid cells", "Division of a diploid germ cell into four genetically identical diploid nuclei", "Reduction division of a haploid cell into two haploid cells"],
+["The first meiotic division:", "Separates pairs of homologous chromosomes, halving the number (diploid → haploid)", "Separates sister chromatids", "Replicates DNA to double the chromosome number", "Separates sister chromatids while keeping the diploid number"],
+["The second meiotic division:", "Separates sister chromatids", "Separates pairs of homologous chromosomes", "Reduces the chromosome number from diploid to haploid", "Duplicates the centromeres"],
+["Mitosis vs. meiosis:", "Mitosis: 1 division → 2 cells with the same number of chromosomes; Meiosis: 2 divisions → 4 cells with half the number", "Mitosis: 2 divisions → 4 cells with half the number; Meiosis: 1 division → 2 cells with the same number", "Mitosis: 1 division → 2 cells with half the number; Meiosis: 2 divisions → 4 cells with the same number", "Mitosis: 1 division → 4 cells; Meiosis: 2 divisions → 2 cells, both with half the number"],
+["Meiosis is the process by which mature sperm and ovum are formed, through either:", "Spermatogenesis or oogenesis", "Spermiogenesis or ovulation", "Oogenesis or ovulation only", "Spermatogenesis or spermiogenesis only"],
+["Strictly applied, the term mitosis is used to describe:", "The duplication and distribution of chromosomes", "The reduction of the chromosome number by half", "The exchange of material between homologous chromosomes", "The formation of gametes in the reproductive organs"],
+["Gametogenesis is the process by which:", "Male and female gametes are formed", "Male and female gametes fuse to form a zygote", "Male and female gametes are released from the gonads", "Male and female germ cells divide mitotically only"],
+["Cells in the body of sexually reproducing organisms are either:", "Somatic cells (body cells) or gametes (sex cells)", "Diploid cells (2n) or haploid cells (1n) of the same type", "Autosomes or gametes", "Zygotes or gametes"],
+["The correct order of the phases of mitosis is:", "Prophase → Metaphase → Anaphase → Telophase", "Prophase → Anaphase → Metaphase → Telophase", "Metaphase → Prophase → Anaphase → Telophase", "Prophase → Metaphase → Telophase → Anaphase"],
+["Which feature belongs to mitosis only?", "Daughter cells have the same number of chromosomes as the parent cell", "Two cell divisions (I and II)", "Four daughter cells", "Daughter cells have half the number of chromosomes"],
+["Which feature belongs to meiosis only?", "Two cell divisions (Meiosis I and Meiosis II)", "One cell division", "Two daughter cells", "Daughter cells identical to the parent cell"],
+["In the diagram, mitosis starts with DNA replication and ends with:", "Two diploid cells", "Four haploid cells", "Two haploid cells", "Four diploid cells"],
+["Daughter cells produced by meiosis are:", "Genetically distinct from the parent cell", "Genetically identical to the parent cell", "Diploid and identical to each other", "Haploid and identical to the parent cell"],
+["Gametes are made by meiosis in the:", "Reproductive organs", "The zygote after fertilization", "The blastocyst during implantation", "The germ layers of the embryo"],
+["In metaphase, the microtubules attach each chromosome by extending from the centromere to the:", "Centriole", "Nucleolus", "Polar body", "Equatorial plate"],
+["Somatic cells contain:", "diploid number of chromosomes (2n)", "haploid number of chromosomes (1n)", "tetraploid number of chromosomes (4n)", "44 chromosomes only (22 pairs of autosomes)"],
+["Gametes contain:", "haploid number of chromosomes (1n)", "diploid number of chromosomes (2n)", "46 chromosomes, 23 of them double-structured", "haploid number of chromosomes in sperm only"],
+["An example of a somatic cell is:", "nerve cell", "ovum", "sperm", "spermatid"],
+["Examples of gametes are:", "ovum and sperm", "muscle cell and nerve cell", "muscle cell and ovum", "nerve cell and sperm"],
+["Before a cell enters mitosis, each chromosome:", "replicates its DNA", "halves its DNA content", "duplicates its centromere only", "exchanges segments with its homologue"],
+["The two chromatids are joined at a narrow region common to both called the:", "centromere", "centriole", "spindle pole", "nucleolar organizer"],
+["The number of pairs of matching chromosomes (autosomes) in humans is:", "22", "23", "21", "44"],
+["The number of pairs of sex chromosomes in humans is:", "1", "2", "22", "23"],
+["The first phase of mitosis is:", "Prophase", "Metaphase", "Anaphase", "Telophase"],
+["The last phase of mitosis is:", "Telophase", "Prophase", "Metaphase", "Anaphase"],
+["Migration of chromatids to opposite poles of the spindle occurs in:", "Anaphase", "Prophase", "Metaphase", "Telophase"],
+["The first meiotic division changes the chromosome number from:", "diploid to haploid", "haploid to diploid", "diploid to diploid", "haploid to haploid"],
+["The number of cell divisions in mitosis is:", "one", "two", "three", "four"],
+["The number of daughter cells produced by mitosis is:", "two", "four", "one", "eight"],
+["The number of daughter cells produced by meiosis is:", "four", "two", "one", "three"],
+["Meiosis is a specialized type of cell division that:", "reduces the chromosome number by half, creating four haploid cells", "doubles the chromosome number, creating two diploid cells", "keeps the chromosome number and creates two identical cells", "reduces the chromosome number by half, creating two haploid cells"],
+["In the figure, mitosis ends with:", "two diploid cells", "four haploid cells", "two haploid cells", "four diploid cells"],
+["In the figure, mitosis begins with:", "DNA replication", "interphase of two cells", "homologous chromosomes pairing", "daughter nuclei II"],
+["In the figure, meiosis begins with:", "interphase", "DNA replication", "two diploid cells", "daughter nuclei II"],
+["The meiosis figure ends with four:", "haploid daughter cells (daughter nuclei II)", "diploid cells", "genetically identical haploid cells", "haploid cells identical to the parent cell"],
+["Which of the following statements is correct?", "There are 22 pairs of autosomes plus one pair of sex chromosomes", "There are 23 pairs of autosomes plus one pair of sex chromosomes", "There are 22 pairs of sex chromosomes plus one pair of autosomes", "There are 22 autosomes plus 2 sex chromosomes in each gamete"],
+["Which of the following statements is correct?", "Mitosis has four phases: prophase, metaphase, anaphase, telophase", "Mitosis has three phases: prophase, metaphase, telophase", "Mitosis has five phases, including interphase as the first", "Mitosis has four phases: prophase, anaphase, metaphase, telophase"],
+["Which of the following statements is correct?", "In metaphase they line up in the equatorial plane; migration to the poles occurs in anaphase", "In metaphase the chromosomes migrate to the poles; lining up occurs in prophase", "In metaphase the centromere divides; lining up occurs in anaphase", "In metaphase the nuclear membrane reforms; migration occurs in telophase"],
+["Which of the following statements is correct?", "The first meiotic division separates homologous chromosomes; the second separates sister chromatids", "The first meiotic division separates sister chromatids; the second separates homologous chromosomes", "Both meiotic divisions separate homologous chromosomes", "Both meiotic divisions separate sister chromatids"],
+["Which of the following statements is correct?", "Mitosis involves one cell division; meiosis involves two", "Mitosis involves two cell divisions; meiosis involves one", "Both mitosis and meiosis involve one cell division", "Mitosis involves one cell division; meiosis involves four"]
+]},
+{t:"Spermatogenesis & Sperm",q:[
+["Spermatogenesis is the series of events by which:", "Spermatogonia are transformed into spermatozoa", "Spermatids are transformed into spermatozoa", "Primary spermatocytes are transformed into spermatogonia", "Spermatozoa mature in the epididymis"],
+["Spermatogenesis:", "Starts at puberty and continues till old age", "Starts before birth and is arrested until puberty", "Starts at puberty and stops at 45-50 years of age", "Starts in the 3rd month of intrauterine life and continues for life"],
+["Spermatogenesis takes place in the:", "Seminiferous tubules of the testis", "Epididymis", "Ampulla of the vas deferens", "Interstitial tissue of the testis"],
+["In the male, the primordial germ cells:", "Remain dormant until puberty", "Enter prophase of meiosis I before birth", "Rest in the diplotene stage until puberty", "Degenerate at birth and are replaced at puberty"],
+["Spermatogonia are:", "The most primitive sex cells, lying directly on the basement membrane of the seminiferous tubule", "The most mature cells, lying near the lumen of the seminiferous tubule", "Cells lying in the interstitial tissue between the tubules", "Haploid cells that lie in the epididymis"],
+["Spermatogonia (type A and type B) each contain:", "46 chromosomes", "23 chromosomes", "92 chromosomes", "23 double-structured chromosomes"],
+["Type A spermatogonia:", "Divide mitotically and are the source of new spermatogonia", "Enlarge and transform into primary spermatocytes", "Undergo the first meiotic division", "Transform directly into spermatids"],
+["Type B spermatogonia:", "Enlarge and transform into primary spermatocytes, still having 46 chromosomes", "Enlarge and transform into primary spermatocytes with 23 chromosomes", "Divide mitotically to renew the stem cell pool", "Transform directly into secondary spermatocytes"],
+["The primary spermatocyte undergoes the first meiotic division to give:", "2 secondary spermatocytes, each with 23 chromosomes", "2 secondary spermatocytes, each with 46 chromosomes", "4 spermatids, each with 23 chromosomes", "2 spermatids, each with 23 chromosomes"],
+["The secondary spermatocyte undergoes the second meiotic division to give:", "2 spermatids, each with 23 chromosomes", "2 spermatids, each with 46 chromosomes", "4 spermatids, each with 23 chromosomes", "2 spermatozoa, each with 23 chromosomes"],
+["The correct sequence of male germ cells is:", "Spermatogonium → primary spermatocyte → secondary spermatocyte → spermatid → spermatozoon", "Spermatogonium → secondary spermatocyte → primary spermatocyte → spermatid → spermatozoon", "Spermatogonium → primary spermatocyte → spermatid → secondary spermatocyte → spermatozoon", "Primary spermatocyte → spermatogonium → secondary spermatocyte → spermatid → spermatozoon"],
+["How many mature sperms are formed from one primary spermatocyte?", "Four", "Two", "One", "Eight"],
+["Spermiogenesis is the series of changes that transform:", "Spermatids into spermatozoa", "Spermatogonia into spermatids", "Primary spermatocytes into spermatids", "Spermatozoa into mature motile sperm in the epididymis"],
+["The acrosome formed during spermiogenesis:", "Covers half of the nuclear surface and contains enzymes that help penetrate the egg and its surrounding layers", "Covers the whole nucleus and contains mitochondria that supply energy for fertilization", "Forms the axial core of the tail and enables motility", "Surrounds the middle piece and contains the centrioles"],
+["Which of the following is NOT part of spermiogenesis?", "Second meiotic division of the secondary spermatocyte", "Condensation of the nucleus", "Formation of the neck, middle piece and tail", "Shedding of most of the cytoplasm as residual bodies"],
+["The residual bodies shed during spermiogenesis are phagocytosed by:", "Sertoli cells", "Leydig cells", "Spermatogonia", "Epididymal macrophages"],
+["The time required for a spermatogonium to become a mature spermatozoon is approximately:", "74 days", "24 days", "48 days", "37 days"],
+["The duration of spermiogenesis is approximately:", "24 days", "74 days", "48 hours", "14 days"],
+["The mature sperm is divided into:", "Head, middle piece, and tail", "Head, neck, and tail only", "Head, acrosome, and tail", "Head, body, and flagellum"],
+["The sperm head contains:", "An elongated nucleus whose anterior portion is covered by the acrosome", "Numerous spiral mitochondria that produce energy", "The flagellum that facilitates motility", "The centrioles and residual cytoplasm"],
+["The middle piece of the sperm contains:", "Numerous mitochondria that produce energy for tail movement", "An elongated nucleus covered by a cap-like acrosome", "Proteolytic enzymes that digest the zona pellucida", "The Golgi apparatus that forms the acrosomal vesicle"],
+["Sperms are formed in the seminiferous tubules and complete their physiological maturation in the:", "Epididymis", "Vas deferens", "Ampulla of the vas deferens", "Rete testis"],
+["The ampulla of the vas deferens is:", "A dilatation at the end of the vas where sperms remain and, if no ejaculation occurs, degenerate and are absorbed", "A dilatation at the beginning of the epididymis where sperms mature", "A coiled tube in which sperms are formed", "A gland that adds fluid to the sperms"],
+["Sperms lose their power of fertility after about:", "48 hours", "24 hours", "72 hours", "36 hours"],
+["Spermatogenesis is regulated by:", "LH and FSH, both produced by the pituitary gland", "LH and FSH, both produced by the testis", "Progesterone and estrogen produced by the ovary", "LH from the pituitary and progesterone from the testis"],
+["The tail of the sperm:", "Facilitates sperm motility, essential for fertilization", "Contains the acrosome", "Contains the elongated nucleus", "Contains numerous mitochondria for energy"],
+["The mitochondria of the sperm middle piece have a ... shape.", "Spiral", "Rod-shaped", "Ring-shaped", "Scattered granular"],
+["The neck of the sperm lies between the:", "Head and middle piece", "Middle piece and tail", "Acrosome and nucleus", "Tail and plasma membrane"],
+["During spermiogenesis, the acrosome is formed from the:", "Golgi apparatus (acrosomal vesicle)", "Smooth endoplasmic reticulum of the spermatid", "Centriolar microtubules", "Mitochondrial sheath"],
+["During spermiogenesis, the tail (flagellum) develops from the:", "Centrioles and microtubules", "Golgi apparatus and acrosomal vesicle", "Mitochondria and residual cytoplasm", "Nucleus and acrosome"],
+["Which of these cells is still diploid (46 chromosomes)?", "Primary spermatocyte", "Secondary spermatocyte", "Spermatid", "Spermatozoon"],
+["Which cells in spermatogenesis are haploid (23 chromosomes)?", "Secondary spermatocytes, spermatids, and spermatozoa", "Spermatogonia and primary spermatocytes", "Spermatids only", "Primary and secondary spermatocytes"],
+["The first meiotic division occurs in the ... and the second in the ...", "Primary spermatocyte; secondary spermatocyte", "Secondary spermatocyte; primary spermatocyte", "Spermatogonium; primary spermatocyte", "Spermatid; secondary spermatocyte"],
+["Spermatids:", "Do not divide further but transform into spermatozoa", "Undergo the second meiotic division", "Undergo mitosis to renew the population", "Enlarge to become primary spermatocytes"],
+["In the diagram, which cells are (2n)?", "Spermatogonium and primary spermatocyte", "Secondary spermatocytes and spermatids", "Primary spermatocyte and spermatids", "Spermatogonium and mature sperm"],
+["LH and FSH stand for:", "Luteinizing hormone and Follicle-stimulating hormone", "Lutein hormone and Follicle-secreting hormone", "Luteinizing hormone and Fertilization-stimulating hormone", "Lactogenic hormone and Follicle-stimulating hormone"],
+["The acrosome is located in the:", "Anterior portion of the sperm head", "Posterior portion of the sperm head", "Neck region", "Middle piece, around the mitochondria"],
+["The cap-like structure covering the anterior part of the sperm head is the:", "Acrosome", "Mitochondrial sheath", "Neck", "Corona radiata"],
+["The type of cell division that gives spermatocytes → spermatids is:", "Meiosis", "Mitosis", "Spermiogenesis", "Amitosis"],
+["Spermatogenesis continues until:", "old age", "45–50 years", "about 60 years, when the primordial cells are exhausted", "puberty, when the primordial cells become dormant"],
+["The type of spermatogonia that undergoes further mitotic division is:", "type A", "type B", "both type A and type B equally", "neither; they divide only meiotically"],
+["Type B spermatogonia:", "enlarge in size and are transformed into primary spermatocytes", "divide mitotically to renew spermatogonia", "enlarge and transform into spermatids", "enlarge and transform into secondary spermatocytes"],
+["The primary spermatocyte undergoes:", "the 1st meiotic division", "the 2nd meiotic division", "mitosis to form two spermatogonia", "spermiogenesis to form spermatozoa"],
+["The 1st meiotic division of the primary spermatocyte results in:", "2 secondary spermatocytes", "4 spermatids", "2 spermatids", "2 primary spermatocytes"],
+["The secondary spermatocyte undergoes:", "the 2nd meiotic division", "the 1st meiotic division", "mitosis", "spermiogenesis"],
+["The 2nd meiotic division of the secondary spermatocyte forms:", "2 daughter cells called spermatids", "2 secondary spermatocytes", "4 spermatogonia", "2 spermatozoa directly"],
+["The number of spermatids/sperm formed from one primary spermatocyte is:", "4", "1", "2", "8"],
+["Reduction of chromosomes to their half number occurs in the:", "1st meiotic division of the primary spermatocyte", "mitosis of type A spermatogonia", "the 2nd meiotic division of the secondary spermatocyte", "spermiogenesis of the spermatid"],
+["The acrosome is formed in:", "spermiogenesis", "the 2nd meiotic division", "the 1st meiotic division", "the mitotic division of type A spermatogonia"],
+["The acrosome contains:", "enzymes that assist in penetration of the egg and its surrounding layers during fertilization", "mitochondria that produce energy for tail movement", "centrioles that form the tail", "residual cytoplasm shed by the spermatid"],
+["Which of the following is formed during spermiogenesis?", "neck, middle piece and tail", "secondary spermatocytes", "spermatids", "primary spermatocytes"],
+["Most of the cytoplasm of the spermatid is:", "shed as residual bodies", "kept in the middle piece around the mitochondria", "kept in the head around the acrosome", "shed and phagocytosed by Leydig cells"],
+["In the figure, the chromosome number of the spermatogonium is:", "2n", "n", "4n", "3n"],
+["In the figure, the chromosome number of the secondary spermatocyte is:", "n", "2n", "4n", "3n"],
+["In the figure, Meiosis I leads from the primary spermatocyte to:", "secondary spermatocytes", "spermatids", "mature sperm cells", "spermatogonia"],
+["In the figure, Meiosis II leads from the secondary spermatocytes to:", "spermatids", "primary spermatocytes", "spermatogonia", "secondary spermatocytes"],
+["In the figure, spermatids become:", "mature sperm cells", "spermatogonia", "primary spermatocytes", "secondary spermatocytes"],
+["Which structure is labeled in the early stages of the spermiogenesis figure?", "Golgi apparatus and acrosomal vesicle", "Mitochondria and flagellum", "Excess cytoplasm and residual body", "Microtubules and midpiece"],
+["Which structures are labeled in the spermiogenesis figure?", "centrioles, microtubules and flagellum", "Golgi apparatus only", "excess cytoplasm and polar bodies", "mitochondria and corona radiata"],
+["The structure labeled as shed in the later stages of spermiogenesis is:", "excess cytoplasm", "mitochondria", "acrosomal vesicle", "flagellum"],
+["In the diagram of the seminiferous tubule, the cell with the large triangular shape in the middle is the:", "Sertoli cell", "spermatid", "spermatozoon", "spermatogonium"],
+["In the diagram, the labels from the basement membrane to the lumen are in the order:", "spermatogonia, spermatocyte I, spermatocyte II, spermatid, spermatozoa", "spermatogonia, spermatocyte II, spermatocyte I, spermatid, spermatozoa", "spermatozoa, spermatid, spermatocyte II, spermatocyte I, spermatogonia", "spermatogonia, spermatocyte I, spermatid, spermatocyte II, spermatozoa"],
+["In the diagram of the mature sperm, the mitochondrion is described as:", "spiral shape", "straight rod", "ring around the neck", "dispersed granules in the tail"],
+["Sperms are formed in:", "the seminiferous tubules of the testis", "the epididymis", "the vas deferens", "the interstitial tissue of the testis"],
+["Sperms pass in the vas deferens till the:", "ampulla", "epididymis", "seminiferous tubule", "ejaculatory duct"],
+["Which of the following statements is correct?", "Spermatids contain 23 chromosomes", "Spermatids contain 46 chromosomes", "Secondary spermatocytes contain 46 chromosomes", "Primary spermatocytes contain 23 chromosomes"],
+["Which of the following statements is correct?", "Spermiogenesis takes about 24 days; the whole of spermatogenesis takes about 74 days", "Spermiogenesis takes about 74 days; the whole of spermatogenesis takes about 24 days", "Spermiogenesis takes about 48 days; the whole of spermatogenesis takes about 74 days", "Spermiogenesis takes about 24 days; the whole of spermatogenesis takes about 48 days"],
+["Which of the following statements is correct?", "The acrosome is in the head", "The acrosome is in the middle piece", "The acrosome is in the tail", "The mitochondria are in the head"]
+]},
+{t:"Oogenesis & Follicles",q:[
+["Oogenesis is the process by which:", "Oogonia are differentiated into a mature ovum", "Primordial follicles are transformed into a corpus luteum", "Spermatogonia are transformed into an ovum", "The ovum escapes from the Graafian follicle"],
+["Oogenesis takes place in the:", "Cortex of the ovaries", "Medulla of the ovaries", "Hilum of the ovary", "Fimbria of the uterine tube"],
+["Timing of oogenesis:", "Starts before birth, is arrested, and is completed after puberty until 45-50 years (menopause)", "Starts at puberty and continues until 45-50 years (menopause)", "Starts before birth and is completed at puberty", "Starts at puberty and continues till old age"],
+["The aim of oogenesis is reduction of the chromosome number from:", "Diploid (46) to haploid (23)", "Haploid (23) to diploid (46)", "46 to 92", "23 to 46 double-structured"],
+["When primordial germ cells arrive in the gonads of a genetic female they differentiate into:", "Oogonia", "Primary oocytes", "Primordial follicles", "Secondary oocytes"],
+["Oogonia are grouped in clusters in the:", "Cortical part of the ovary", "Medullary part of the ovary", "Fimbria of the uterine tube", "Stroma of the hilum"],
+["Regarding oogonia:", "Some show mitosis; others differentiate into primary oocytes and enter prophase of the first meiotic division", "All differentiate into primary oocytes and enter the second meiotic division", "All keep dividing by mitosis until puberty", "Some undergo meiosis II; others enter prophase of meiosis I"],
+["Near the time of birth, instead of proceeding into metaphase, the primary oocytes enter the:", "Diplotene stage (a resting stage)", "Metaphase stage of meiosis I", "Leptotene stage of meiosis I", "Diakinesis stage of meiosis I"],
+["Primary oocytes remain arrested in prophase of the first meiotic division until:", "Puberty is reached (finishing division before ovulation)", "Birth", "Menopause", "The 3rd month of intrauterine life"],
+["By the beginning of puberty:", "About 40,000 primary oocytes are present and fewer than 500 will be ovulated", "About 400,000 primary oocytes are present and fewer than 40 will be ovulated", "About 40,000 primary oocytes are present and fewer than 5000 will be ovulated", "About 4,000 primary oocytes are present and fewer than 500 will be ovulated"],
+["At puberty, how many primordial follicles give rise to growing follicles each time?", "15 to 20", "40,000", "45 to 50", "500"],
+["In the vesicular stage, some follicles begin to accumulate fluid in a space called the:", "Antrum", "Zona pellucida", "Cumulus oophorus", "Corona radiata"],
+["Follicles are called mature Graafian follicles about ... before ovulation.", "37 hours", "3 hours", "24 hours", "14 days"],
+["Granulosa cells rest on a basement membrane separating them from the surrounding ovarian connective tissue (stromal cells), which forms the:", "Theca folliculi", "Zona pellucida", "Corona radiata", "Cumulus oophorus"],
+["The zona pellucida is a layer of glycoproteins secreted by:", "Granulosa cells and the oocyte", "Theca interna cells only", "Theca externa cells only", "Granulosa cells and theca interna"],
+["The theca interna is:", "An inner layer of secretory cells with steroid-secreting characters, rich in blood vessels", "An outer fibrous capsule with a protective function", "A glycoprotein layer around the oocyte", "The layer of granulosa cells next to the oocyte"],
+["The theca externa is:", "An outer fibrous capsule with a protective function", "An inner layer of secretory cells rich in blood vessels", "A glycoprotein layer around the oocyte", "The layer of cells that surrounds the zona pellucida"],
+["With each ovarian cycle a number of follicles begin to develop, but:", "Usually only one reaches full maturity and the others degenerate and become atretic", "Usually all of them reach maturity and ovulate together", "Usually two reach maturity and the others form corpora lutea", "Usually only one begins to develop and the others stay primordial"],
+["A surge in LH induces:", "The preovulatory growth phase, with completion of meiosis I", "The formation of the antrum in primordial follicles", "Entry of oogonia into prophase of meiosis I", "The arrest of the oocyte in diplotene"],
+["Completion of meiosis I results in:", "Two daughter cells of unequal size, each with 23 double-structured chromosomes", "Two daughter cells of equal size, each with 23 single-structured chromosomes", "Four daughter cells of equal size, each with 23 chromosomes", "Two daughter cells of unequal size, each with 46 chromosomes"],
+["After meiosis I, the secondary oocyte receives most of the cytoplasm, while the first polar body:", "Receives none", "Receives half", "Receives the nucleus only", "Receives the zona pellucida"],
+["The oocyte enters meiosis II but arrests in metaphase approximately ... before ovulation.", "3 hours", "37 hours", "24 hours", "48 hours"],
+["Meiosis II is completed only if the oocyte is fertilized; otherwise the cell degenerates about ... after ovulation.", "24 hours", "3 hours", "48 hours", "14 days"],
+["The ovulated secondary oocyte is arrested at:", "Metaphase of meiosis II", "Metaphase of meiosis I", "Prophase of meiosis I", "Prophase of meiosis II"],
+["In the mature Graafian follicle, the corona radiata is made of:", "Granulosa cells", "Theca interna cells", "Theca externa cells", "Stromal fibroblasts"],
+["In the follicle figure, the primordial follicle (A) is characterized by:", "Flat epithelial (follicular) cells around the primary oocyte", "Cuboidal follicular cells and the beginning of the zona pellucida", "A distinct zona pellucida with several layers of granulosa cells", "A fluid-filled antrum"],
+["In the follicle figure, the growing follicle (B) shows:", "Cuboidal follicular cells and the beginning of the zona pellucida", "Flat epithelial cells around the oocyte", "A fluid-filled antrum and cumulus oophorus", "Theca interna and externa only"],
+["The correct order of follicle development is:", "Primordial → primary → secondary → tertiary (Graafian)", "Primordial → secondary → primary → tertiary (Graafian)", "Primary → primordial → secondary → tertiary (Graafian)", "Primordial → primary → tertiary (Graafian) → secondary"],
+["The fertilized ovum (zygote) contains:", "First and second polar bodies and male and female pronuclei", "The first polar body only and one pronucleus", "Second polar body and a corona radiata only", "Two polar bodies and a spindle in metaphase II"],
+["The part of the sperm containing the proteolytic enzymes that digest the zona pellucida is the:", "Acrosome", "Head (nucleus)", "Mitochondrial sheath", "Neck"],
+["Granulosa cells grow like layers of an onion in the:", "Secondary follicle", "Primordial follicle", "Primary follicle", "Corpus luteum"],
+["The nucleus of the oocyte in the follicle is called the:", "Germinal vesicle", "Corona radiata", "Cumulus oophorus", "Antrum"],
+["The correct early sequence of the female germ cell is:", "Primordial germ cell → migration to ovary → oogonium → entry into meiosis I (primary oocyte)", "Oogonium → primordial germ cell → primary oocyte → migration to ovary", "Primary oocyte → oogonium → migration to ovary → meiosis II", "Primordial germ cell → oogonium → secondary oocyte → migration to ovary"],
+["The gonadotropin surge at the middle of the menstrual cycle stimulates:", "Re-entry of the oocyte into meiosis as far as metaphase II", "Entry of oogonia into meiosis I", "Formation of the zona pellucida", "Formation of the primordial follicles"],
+["The ovulated oocyte is surrounded by:", "Zona pellucida and a cloud of granulosa (cumulus) cells", "Theca externa and theca interna", "Basement membrane and stromal cells", "Zona pellucida only"],
+["The ovulated oocyte contains the:", "First polar body and a spindle (metaphase II)", "Second polar body and two pronuclei", "First and second polar bodies", "Only a germinal vesicle in diplotene"],
+["Which of the following cells has 46 chromosomes?", "Primary oocyte", "Secondary oocyte", "First polar body", "Mature ovum"],
+["The primary oocyte remains in the first meiotic division until:", "Before ovulation", "Birth", "Menopause", "The 3rd month of intrauterine life"],
+["The stromal cells of the ovarian connective tissue form the:", "Theca folliculi", "Granulosa cells", "Zona pellucida", "Corona radiata"],
+["In the follicle figure, the primary follicle (C) shows:", "A clear zona pellucida around the oocyte", "Flat follicular cells only", "A large fluid-filled antrum", "A corona radiata and a cumulus oophorus"],
+["In the tertiary (Graafian) follicle, the antrum contains:", "Follicular fluid", "Blood from the theca interna", "Glycoprotein material of the zona pellucida", "Granulosa cells only"],
+["The cumulus oophorus is part of the:", "Mature Graafian follicle", "Primordial follicle", "Corpus luteum", "Primary follicle"],
+["The membrana granulosa in the Graafian follicle consists of:", "Follicular (granulosa) cells", "Theca interna cells", "Theca externa fibroblasts", "Stromal cells"],
+["The cell that completes meiosis II after fertilization gives off the:", "Second polar body", "First polar body", "Corona radiata", "Zona pellucida"],
+["Meiosis I in the oocyte is completed:", "Just before ovulation under the LH surge", "At birth", "At puberty without any hormone", "After fertilization"],
+["Primary oocytes are formed from oogonia ... and complete prophase of meiosis I ...", "Before birth; they rest in diplotene", "After puberty; they rest in metaphase", "At birth; they rest in anaphase", "At menopause; they rest in prophase"],
+["The site of oogenesis is:", "the cortex of the ovaries", "the medulla of the ovaries", "the ovarian hilum", "the surface of the uterine tube"],
+["Oogenesis is arrested and then completed:", "after puberty", "at birth", "at menopause", "at the 3rd month of intrauterine life"],
+["Oogenesis continues till:", "45–50 years of age (menopause)", "30–35 years of age", "puberty", "old age, like spermatogenesis"],
+["Maturation of the oocyte begins:", "before birth", "at puberty", "at ovulation", "at fertilization"],
+["Other oogonia differentiate into:", "primary oocytes", "secondary oocytes", "oogonia only", "polar bodies"],
+["Near the time of birth, all primary oocytes have started:", "prophase of meiosis I", "metaphase of meiosis I", "prophase of meiosis II", "anaphase of meiosis I"],
+["The diplotene stage is:", "a resting stage", "a dividing stage of meiosis II", "the stage in which the first polar body is formed", "the stage of metaphase arrest at ovulation"],
+["By the beginning of puberty, the number of primary oocytes present is approximately:", "40,000", "400", "4,000", "400,000"],
+["The accumulation of fluid in the antrum is called the:", "vesicular stage", "primordial stage", "luteal stage", "atretic stage"],
+["Primordial follicles begin to grow to form the:", "primary follicle", "corpus luteum", "Graafian follicle directly", "corpus albicans"],
+["Cells of the theca folliculi organize into:", "theca interna and theca externa", "zona pellucida and corona radiata", "theca interna and membrana granulosa", "theca externa and cumulus oophorus"],
+["The cells of the theca interna have the characters of:", "steroid secretion", "fibrous support and protection", "glycoprotein secretion", "absorption of follicular fluid"],
+["The follicles that do not reach maturity:", "degenerate and become atretic", "become corpus luteum", "are ovulated alternately", "become Graafian follicles in the next cycle"],
+["The preovulatory growth phase is induced by a surge in:", "luteinizing hormone (LH)", "follicle-stimulating hormone (FSH) only", "progesterone from the corpus luteum", "estrogen from the theca externa"],
+["Completion of meiosis I forms two daughter cells which are:", "of unequal size", "of equal size, each with 46 chromosomes", "of unequal size, each with 46 single chromosomes", "of equal size, each with 23 single chromosomes"],
+["In the figure, the structures shown around the ovulated oocyte include:", "first polar body, spindle, zona pellucida and cloud of granulosa (cumulus) cells", "second polar body, two pronuclei and corona radiata", "antrum, theca externa and corpus luteum", "first polar body, spindle and a fully formed zygote nucleus"],
+["In the figure, the cell that arrives in the ovary by migration is the:", "primordial germ cell", "primary follicle", "oogonium", "secondary oocyte"],
+["In the figure, the sequence of follicle stages is:", "primordial, primary, secondary, tertiary (Graafian)", "tertiary, secondary, primary, primordial", "primary, primordial, tertiary, secondary", "secondary, primordial, primary, tertiary"],
+["In the mature Graafian follicle, the cavity is the:", "follicular antrum (follicular cavity)", "cumulus oophorus", "zona pellucida", "corona radiata"],
+["In the Graafian follicle, the heap of cells that carries the oocyte is the:", "cumulus oophorus", "theca interna", "corona radiata", "membrana granulosa"],
+["In the Graafian follicle diagram, from outside to inside, the layers include:", "theca externa, theca interna, basement membrane, membrana granulosa", "theca interna, theca externa, membrana granulosa, basement membrane", "theca externa, membrana granulosa, basement membrane, theca interna", "membrana granulosa, basement membrane, theca interna, theca externa"],
+["The oocyte inside the Graafian follicle is the:", "secondary oocyte", "primary oocyte", "oogonium", "first polar body"],
+["In figure A, the follicle is a:", "primordial follicle", "growing follicle", "primary follicle", "secondary follicle"],
+["A well-developed zona pellucida appears in:", "primary follicle C", "primordial follicle A", "growing follicle B", "both primordial A and growing B"],
+["The nucleus labeled in primordial follicle A is the nucleus of the:", "primary oocyte", "oogonium", "secondary oocyte", "granulosa cell"],
+["Which of the following statements is correct?", "The theca interna is secretory (steroid-like); the theca externa has the protective function", "The theca interna has the protective function; the theca externa is secretory", "Both theca layers are secretory and rich in blood vessels", "The theca externa is the inner secretory layer; the theca interna is the outer fibrous capsule"]
+]},
+{t:"Ovulation & Corpus Luteum",q:[
+["Ovulation is defined as:", "The escape of an ovum from the Graafian follicle", "The formation of the corpus luteum from the Graafian follicle", "The entry of the oocyte into meiosis I", "The fusion of the sperm with the ovum"],
+["Ovulation occurs:", "14 days before the 1st day of the next menstruation", "14 days after the 1st day of the next menstruation", "7 days before the 1st day of the next menstruation", "21 days before the 1st day of the next menstruation"],
+["The hormonal factor of ovulation is:", "Release of LH from the pituitary gland (LH surge)", "Release of FSH from the ovary", "Release of progesterone from the corpus luteum", "Release of LH from the corpus luteum"],
+["The mechanical factors of ovulation are:", "Increased intrafollicular pressure, hyperemia and edema of theca interna, thinning of the ovarian cortex at the site of ovulation", "Decreased intrafollicular pressure, ischemia of theca interna, thickening of the ovarian cortex", "Increased intrafollicular pressure, hyperemia of theca externa, thickening of the ovarian cortex", "Increased intrafollicular pressure, edema of granulosa cells, thinning of the endometrium"],
+["The fimbria of the uterine tube pick the ovum by moving around the site of ovulation guided by:", "Thermotaxis and chemotaxis", "Peristalsis and ciliary beating", "Gravity and blood pressure", "Hormonal signals from the corpus luteum"],
+["The ovum either gets fertilized or dies after:", "24-36 hours", "12-24 hours", "36-48 hours", "48-72 hours"],
+["Signs of ovulation include:", "Change in body temperature, slight abdominal pain, and vaginal spotting", "Rise in blood pressure, severe abdominal pain, and heavy bleeding", "Change in body temperature, nausea, and breast enlargement", "Slight abdominal pain, fever, and vaginal discharge of pus"],
+["The corpus luteum is formed from the Graafian follicle under the effect of:", "LH, in the second half of the ovarian cycle (luteal phase)", "FSH, in the first half of the ovarian cycle (follicular phase)", "Progesterone, in the second half of the ovarian cycle", "LH, in the first half of the ovarian cycle"],
+["The yellow pigments of the corpus luteum are deposited in:", "Granulosa and theca interna cells", "Granulosa and theca externa cells", "Theca interna and stromal cells", "Oocyte and zona pellucida"],
+["The corpus luteum produces progesterone, which is responsible for:", "The secretory phase of the uterine cycle", "The proliferative phase of the uterine cycle", "The menstrual phase of the uterine cycle", "The LH surge in the ovarian cycle"],
+["If fertilization occurs, the corpus luteum stays for ... and secretes progesterone to keep the endometrium intact till formation of the placenta.", "4 months", "10 days", "9 months", "14 days"],
+["Without fertilization, the corpus luteum lives for ... then transforms into fibrous tissue called corpus albicans.", "10 days", "4 months", "14 days", "24-36 hours"],
+["When the corpus luteum becomes corpus albicans, it:", "Stops secreting progesterone", "Starts secreting estrogen only", "Starts secreting LH", "Secretes progesterone for 4 more months"],
+["Before ovulation, the enlarged follicle:", "Forms a blister on the surface of the ovary", "Sinks deep into the medulla of the ovary", "Ruptures into the uterine cavity", "Is converted into a corpus albicans"],
+["Hyperemia and edema during ovulation occur in the:", "Theca interna cells", "Theca externa cells", "Granulosa cells", "Corona radiata"],
+["Thinning occurs in the ... at the site of ovulation.", "Cortex of the ovary", "Medulla of the ovary", "Uterine tube wall", "Endometrium"],
+["The luteal phase is the:", "Second half of the ovarian cycle", "First half of the ovarian cycle", "Menstrual phase", "Preovulatory phase"],
+["The corpus albicans is:", "Fibrous tissue that stops secreting progesterone", "A yellow gland that secretes progesterone for 4 months", "A mature Graafian follicle", "An atretic follicle"],
+["During pregnancy, progesterone from the corpus luteum keeps the endometrium intact until:", "The placenta is formed", "Ovulation of the next cycle", "The 10th day of pregnancy", "Formation of the corpus albicans"],
+["Which is NOT a sign of ovulation?", "Heavy bleeding", "Change in body temperature", "Slight abdominal pain", "Vaginal spotting"],
+["After ovulation, the Graafian follicle changes into the:", "Corpus luteum", "Corpus albicans directly", "Secondary follicle", "Atretic follicle"],
+["Ovulation is caused by an LH surge released from the:", "Pituitary gland", "Ovary (granulosa cells)", "Corpus luteum", "Hypothalamus"],
+["The enlarged follicle forming a blister on the ovary surface is the result of:", "Increased intrafollicular pressure and thinning of the cortex", "Contraction of the uterine tube", "Increased progesterone from the corpus luteum", "Degeneration of the theca externa"],
+["The uterine tube fimbria pick the ovum by moving around the:", "Site of ovulation", "Uterine cavity", "Isthmus of the uterine tube", "Cervical canal"],
+["Which of the following is a mechanical factor of ovulation?", "increased intrafollicular pressure", "LH surge", "increased progesterone from the corpus luteum", "fimbrial movement"],
+["Which of the following is a mechanical factor of ovulation?", "hyperemia and edema of theca interna cells", "FSH surge", "hyperemia and edema of theca externa cells", "fimbria movement"],
+["Which of the following is a mechanical factor of ovulation?", "thinning of the cortex of the ovary at the site of ovulation", "thickening of the cortex of the ovary at the site of ovulation", "thinning of the zona pellucida", "increase of progesterone"],
+["Which of the following is NOT a mechanical factor of ovulation?", "LH surge (hormonal factor)", "increased intrafollicular pressure", "hyperemia and edema of theca interna cells", "thinning of the cortex of the ovary"],
+["The fate of the ovum is either fertilization or death after:", "24–36 hours", "12–24 hours", "36–48 hours", "48–72 hours"],
+["The corpus luteum is formed under the effect of:", "luteinizing hormone (LH)", "follicle-stimulating hormone (FSH)", "progesterone", "estrogen"],
+["The ovulated oocyte, if not fertilized, degenerates approximately:", "24 hours after ovulation", "3 hours after ovulation", "37 hours after ovulation", "48 hours after ovulation"],
+["The Graafian follicle becomes the corpus luteum under the effect of LH. LH is produced by:", "the pituitary gland", "the ovary (granulosa cells)", "the corpus luteum", "the hypothalamus"],
+["Cells of the Graafian follicle in which yellow pigment is deposited include the:", "granulosa cells", "theca externa cells", "the oocyte", "zona pellucida"],
+["The mechanical factors lead to:", "rupture of the follicle and release of the ovum", "formation of the corpus luteum", "formation of the zona pellucida", "closing of the uterine tube"],
+["Which statement about the corpus luteum without fertilization is correct?", "It lives 10 days then becomes fibrous tissue", "It lives 4 months and secretes progesterone", "It lives 10 days then becomes the placenta", "It lives 10 days then continues secreting progesterone"]
+]}
+];
+var D=L.map(function(c){return{title:c.t,qs:c.q.map(function(x){return{q:x[0],o:x.slice(1),a:0}})}});
+var app=document.getElementById("app"),S={};
+function esc(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function home(){
+  var h='<div class="hero"><h1>امتحان الإمبريولوجي</h1></div><div class="grid">';
+  D.forEach(function(Lc,i){h+='<button class="lec" data-i="'+i+'"><span class="num">'+(i+1)+'</span><span><b>'+esc(Lc.title)+'</b><small>'+Lc.qs.length+' سؤال في البنك - 12 سؤال عشوائي في كل مرة</small></span></button>'});
+  h+='<button class="lec" data-i="all"><span class="num">★</span><span><b>Full Mix</b><small>امتحان شامل - 12 سؤال عشوائي من كل الأجزاء</small></span></button>';
+  app.innerHTML=h+'</div>';
+  app.querySelectorAll(".lec").forEach(function(b){b.onclick=function(){start(b.dataset.i)}});
+  window.scrollTo(0,0);
+}
+function start(i){
+  var pool=[],title;
+  if(i==="all"){D.forEach(function(c){pool=pool.concat(c.qs)});title="Full Mix"}else{pool=D[+i].qs;title=D[+i].title}
+  var qs=shuf(pool).slice(0,12).map(function(q){
+    var idx=shuf(q.o.map(function(_,k){return k}));
+    return{q:q.q,o:idx.map(function(k){return q.o[k]}),a:idx.indexOf(q.a)}});
+  S={i:i,title:title,qs:qs,n:0,score:0,miss:[]};show();
+}
+function show(){
+  var q=S.qs[S.n],tot=S.qs.length;
+  var h='<div class="bar"><button class="back" id="bk">رجوع</button><div class="prog"><i style="width:'+(S.n/tot*100)+'%"></i></div><span class="cnt">'+(S.n+1)+' / '+tot+'</span></div>';
+  h+='<div class="card"><div class="ltitle">'+esc(S.title)+'</div><p class="q">'+esc(q.q)+'</p><div class="opts">';
+  q.o.forEach(function(o,k){h+='<button class="opt" data-k="'+k+'"><span class="l">'+"abcd"[k]+'</span><span>'+esc(o)+'</span></button>'});
+  h+='</div><div id="fb"></div></div>';
+  app.innerHTML=h;
+  document.getElementById("bk").onclick=function(){if(confirm("تخرج من الامتحان؟"))home()};
+  app.querySelectorAll(".opt").forEach(function(b){b.onclick=function(){pick(+b.dataset.k)}});
+  window.scrollTo(0,0);
+}
+function pick(k){
+  var q=S.qs[S.n],bs=app.querySelectorAll(".opt");
+  bs.forEach(function(b,j){b.disabled=true;if(j===q.a)b.classList.add("ok");else if(j===k)b.classList.add("bad")});
+  if(k===q.a)S.score++;else S.miss.push({q:q.q,a:q.o[q.a]});
+  var last=S.n===S.qs.length-1;
+  document.getElementById("fb").innerHTML='<button class="btn" id="nx">'+(last?"شوف النتيجة":"السؤال اللي بعده")+'</button>';
+  document.getElementById("nx").onclick=function(){if(last)result();else{S.n++;show()}};
+}
+function result(){
+  var t=S.qs.length,p=Math.round(S.score/t*100);
+  var msg=p>=85?"ممتاز! كمّل كده":p>=60?"كويس، راجع الغلطات وهتبقى تمام":"محتاج مراجعة تانية للجزء ده";
+  var h='<div class="card score"><div class="ltitle">'+esc(S.title)+'</div><div class="big">'+S.score+' / '+t+'</div><p>'+msg+'</p></div>';
+  if(S.miss.length){h+='<div class="rev"><b>الأسئلة اللي غلطت فيها:</b>';S.miss.forEach(function(m){h+='<div class="r">'+esc(m.q)+'<br><em>'+esc(m.a)+'</em></div>'});h+='</div>'}
+  h+='<button class="btn" id="again">12 سؤال عشوائي جداد</button><button class="btn alt" id="hm">رجوع للأجزاء</button>';
+  app.innerHTML=h;
+  document.getElementById("again").onclick=function(){start(S.i)};
+  document.getElementById("hm").onclick=home;
+  window.scrollTo(0,0);
+}
+home();
+</script>
+</body>
+</html>
